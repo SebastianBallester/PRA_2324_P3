@@ -17,8 +17,26 @@ class TableEntry {
 	template <typename Z>friend bool operator==(const TableEntry<Z> &te1, const TableEntry<Z> &te2);
 	template <typename Y>friend bool operator!=(const TableEntry<Y> &te1, const TableEntry<Y> &te2);
 	template <typename X>friend std::ostream& operator<<(std::ostream &out, const TableEntry<X> &te);
+	template <typename A>friend bool operator<(const TableEntry<A> &te1, const TableEntry<A> &te2);
+	template <typename B>friend bool operator>(const TableEntry<B> &te1, const TableEntry<B> &te2);
 
-}; 
+};
+
+template <typename A>
+bool operator<(const TableEntry<A> &te1, const TableEntry<A> &te2){
+
+  if(te1.key < te2.key)
+    return true;
+  return false;
+}
+
+template <typename B>
+bool operator>(const TableEntry<B> &te1, const TableEntry<B> &te2){
+
+  if(te1.key > te2.key)
+    return true;
+  return false;
+}
 
 template <typename V>
 TableEntry<V>::TableEntry(std::string key, V value){
